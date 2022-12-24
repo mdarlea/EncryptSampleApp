@@ -6,6 +6,7 @@ using CriptText.ViewModels.CreateFile;
 using CriptText.ViewModels.CurrentUser;
 using CriptText.ViewModels.Messages;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace CriptText.ViewModels.Exercise2
@@ -42,6 +43,16 @@ namespace CriptText.ViewModels.Exercise2
 			private set => SetProperty(ref fileCreated, value);
 		}
 
+		protected override void OnPropertyChanged(PropertyChangedEventArgs e)
+		{
+			base.OnPropertyChanged(e);
+
+			if (e.PropertyName == nameof(FileName) && !string.IsNullOrWhiteSpace(FileName)) 
+			{
+				TextToSave = fileService.GetFileContent(FileName);
+			}
+		}
+
 		protected override void OnActivated()
         {
             Messenger.Register<Exercise2ViewModel, TextToSaveInFileRequestMessage>(this, (r, m) => m.Reply(r.TextToSave!));
@@ -51,7 +62,6 @@ namespace CriptText.ViewModels.Exercise2
 			});
 
 			FileName = Messenger.Send<FileNameRequestMessage>();
-			TextToSave = fileService.GetFileContent(FileName);
 		}
 
 		protected override void OnDeactivated()
