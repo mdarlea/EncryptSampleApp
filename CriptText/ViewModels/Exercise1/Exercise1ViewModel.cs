@@ -1,17 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using CriptText.ViewModels.CreateFile;
-using CriptText.ViewModels.Encrypt;
 using System;
-using System.ComponentModel;
 using System.Windows.Input;
 
-namespace CriptText.ViewModels.Main
+namespace CriptText.ViewModels.Exercise1
 {
-	public class LayoutViewModel : ObservableRecipient
+	public class Exercise1ViewModel : ObservableRecipient
 	{
-		public LayoutViewModel() 
+		public Exercise1ViewModel() 
 		{
 			CreateFileCommand = new RelayCommand(CreateFile);
 		}
@@ -48,7 +45,7 @@ namespace CriptText.ViewModels.Main
 
 		protected override void OnActivated()
 		{
-			Messenger.Register<LayoutViewModel, StudentNameRequestMessage>(this, (r, m) => {
+			Messenger.Register<Exercise1ViewModel, StudentNameRequestMessage>(this, (r, m) => {
 				if (UseWindowsUserName)
 					m.Reply(null);
 				else

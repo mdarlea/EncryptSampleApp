@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
-using CriptText.ViewModels.Main;
+using CriptText.ViewModels.Exercise1;
 
 namespace CriptText.ViewModels.CurrentUser
 {
-    public class CurrentUserViewModel : ObservableRecipient
+	public class CurrentUserViewModel : ObservableRecipient
     {
         private string currentUser = string.Empty;
         public string CurrentUser
@@ -15,7 +15,7 @@ namespace CriptText.ViewModels.CurrentUser
 
         protected override void OnActivated()
         {
-            Messenger.Register<CurrentUserViewModel, CurrentUsernameRequestMessage>(this, (r, m) => m.Reply(r.GetCurrentUser()));
+            Messenger.Register<CurrentUserViewModel, TextToSaveInFileRequestMessage>(this, (r, m) => m.Reply(r.GetCurrentUser()));
         }
 
 		protected override void OnDeactivated()

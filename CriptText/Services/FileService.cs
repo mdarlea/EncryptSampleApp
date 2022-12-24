@@ -21,9 +21,7 @@ namespace CriptText.Services
 		{
 			var path = GetFilePath(fileName);
 
-			var lines = File.ReadAllLines(path);
-
-			var text = lines.Length > 0 ? lines[0] : string.Empty;
+			var text = File.ReadAllText(path);
 
 			return text;
 		}

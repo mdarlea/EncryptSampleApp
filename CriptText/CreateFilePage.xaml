@@ -1,0 +1,72 @@
+﻿<Page x:Class="CriptText.CreateFilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CriptText" 
+	  xmlns:validators="clr-namespace:CriptText.Validators"
+	  mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Create File" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"></ColumnDefinition>
+			<ColumnDefinition Width="300"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<Label Content="File Name:" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14"></Label>
+		<TextBox x:Name="FileName" Text="{ Binding LayoutViewModel.FileName, Mode=TwoWay }"  Grid.Row="0" Grid.Column="1" Width="Auto" Height="25" Margin="10"></TextBox>
+		<TextBox x:Name="message" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+			<TextBox.Text>
+				<Binding Path="LayoutViewModel.TextToSave" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+					<Binding.ValidationRules>
+						<validators:EmptyTextValidationRule />
+					</Binding.ValidationRules>
+				</Binding>
+			</TextBox.Text>
+		</TextBox>
+
+		<Button Content="Create File" Command="{ Binding LayoutViewModel.CreateFileCommand, Mode=OneWay }"  Grid.Row="2" Grid.ColumnSpan="2" Width="300" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,10" FontFamily="Arial" FontSize="14" FontWeight="Bold">
+			<Button.Effect>
+				<DropShadowEffect/>
+			</Button.Effect>
+			<Button.Style>
+				<Style TargetType="{x:Type Button}">
+					<Setter Property="IsEnabled" Value="False"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{ Binding ElementName=message, Path=(Validation.HasError)}" Value="false">
+							<Setter Property="IsEnabled" Value="true" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding LayoutViewModel.TextToSave}" Value="{x:Null}">
+							<Setter Property="IsEnabled" Value="false" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding LayoutViewModel.TextToSave}" Value="">
+							<Setter Property="IsEnabled" Value="false" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Button.Style>
+		</Button>
+
+		<Label Grid.Row="3" Grid.ColumnSpan="2" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+			<Label.Style>
+				<Style TargetType="{x:Type Label}">
+					<Setter Property="Visibility" Value="Visible" />
+					<Setter Property="Content" Value="File was successfully created" />
+					<Style.Triggers>
+						<DataTrigger Binding="{ Binding LayoutViewModel.FileCreated }" Value="False">
+							<Setter Property="Label.Visibility" Value="Collapsed" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Label.Style>
+		</Label>
+	</Grid>
+</Page>
