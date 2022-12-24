@@ -19,7 +19,7 @@ namespace CriptText.ViewModels
 			Messenger.Register<MainWindowViewModel, FileNameRequestMessage>(this, (r, m) => m.Reply(r.FileName!));
 			Messenger.Register<MainWindowViewModel, FileCreatedMessage>(this, (r, m) =>
 			{
-				FileName = m.Value;
+				FileName = m.Value.FileName;
 			});
 		}
 	}

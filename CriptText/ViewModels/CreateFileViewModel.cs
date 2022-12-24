@@ -2,8 +2,6 @@
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CriptText.Services;
-using CriptText.ViewModels.CurrentUser;
-using CriptText.ViewModels.Exercise1;
 using CriptText.ViewModels.Messages;
 
 namespace CriptText.ViewModels.CreateFile
@@ -28,7 +26,10 @@ namespace CriptText.ViewModels.CreateFile
 		{
 			if (message.Sender.GetType() == typeof(Exercise1ViewModel) && message.PropertyName == nameof(Exercise1ViewModel.Filename))
 			{
-				CreateFile(message.NewValue ?? string.Empty);
+				var response = Messenger.Send<TextToSaveInFileRequestMessage>();
+				var text = response.Response;
+
+				CreateFile(message.NewValue ?? string.Empty, text, FileContentType.Text);
 			}
 		}
 
@@ -38,7 +39,7 @@ namespace CriptText.ViewModels.CreateFile
 
 			Messenger.Register<CreateFileViewModel, CreateFileMessage>(this, (r, m) => 
 			{
-				CreateFile(m.Value);
+				CreateFile(m.Value, m.FileContent, m.FileContentType);
 			});
 		}
 
@@ -47,20 +48,27 @@ namespace CriptText.ViewModels.CreateFile
 			Messenger.UnregisterAll(this);
 		}
 
-		private void CreateFile(string fileName)
+		private void CreateFile(string fileName, string fileContent, FileContentType fileContentType)
 		{
-			var response = Messenger.Send<TextToSaveInFileRequestMessage>();
-			var text = response.Response;
-
 			try
 			{
-				fileService.CreateFile(fileName, text);
+				var filePath = fileService.CreateFile(fileName, fileContent);
+
 				FileName = fileName;
-				Messenger.Send(new FileCreatedMessage(fileName));
+
+				Messenger.Send(new FileCreatedMessage(new FileInfo
+				{
+					FileName = fileName,
+					FilePath = filePath
+				}, fileContentType));
 			}
 			catch
 			{
-				Messenger.Send(new FileCreatedMessage(null));
+				Messenger.Send(new FileCreatedMessage(new FileInfo
+				{
+					FileName = null,
+					FilePath = null
+				}, fileContentType));
 			}
 		}
 	}

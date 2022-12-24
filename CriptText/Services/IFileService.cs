@@ -4,6 +4,7 @@
 	{
 		void AddNewlineToFile(string fileName, string text);
 		string CreateFile(string fileName, string text);
-		string GetFileContent(string fileName);
+		string GetFileContent(string filePath);
+		string GetUserFileContent(string fileName);
 	}
 }

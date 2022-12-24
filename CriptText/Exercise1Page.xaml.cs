@@ -23,6 +23,7 @@ namespace CriptText
             ViewModel.LayoutViewModel.IsActive = true;
             ViewModel.CreateFileViewModel.IsActive = true;
             ViewModel.CurrentUserViewModel.IsActive = true;
+			ViewModel.WindowsUserViewModel.IsActive = true;
             ViewModel.EncryptViewModel.IsActive = true;
             ViewModel.DecryptViewModel.IsActive = true;
         }
@@ -32,7 +33,8 @@ namespace CriptText
             ViewModel.LayoutViewModel.IsActive = false;
             ViewModel.CreateFileViewModel.IsActive = false;
             ViewModel.CurrentUserViewModel.IsActive = false;
-            ViewModel.EncryptViewModel.IsActive = false;
+			ViewModel.WindowsUserViewModel.IsActive = false;
+			ViewModel.EncryptViewModel.IsActive = false;
             ViewModel.DecryptViewModel.IsActive = false;
         }
     }

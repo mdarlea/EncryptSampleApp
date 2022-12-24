@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
-using CriptText.ViewModels.Exercise1;
+using CriptText.ViewModels.Messages;
 
-namespace CriptText.ViewModels.CurrentUser
+namespace CriptText.ViewModels
 {
 	public class CurrentUserViewModel : ObservableRecipient
     {
@@ -15,15 +15,15 @@ namespace CriptText.ViewModels.CurrentUser
 
         protected override void OnActivated()
         {
-            Messenger.Register<CurrentUserViewModel, TextToSaveInFileRequestMessage>(this, (r, m) => m.Reply(r.GetCurrentUser()));
+            Messenger.Register<CurrentUserViewModel, CurrentUserNameRequestMessage>(this, (r, m) => m.Reply(r.GetCurrentUser()));
         }
 
-		protected override void OnDeactivated()
-		{
-			Messenger.UnregisterAll(this);
-		}
+        protected override void OnDeactivated()
+        {
+            Messenger.UnregisterAll(this);
+        }
 
-		private string GetCurrentUser()
+        private string GetCurrentUser()
         {
             var result = Messenger.Send<StudentNameRequestMessage>();
             if (!string.IsNullOrWhiteSpace(result.Response))
@@ -32,7 +32,7 @@ namespace CriptText.ViewModels.CurrentUser
             }
             else
             {
-                CurrentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                CurrentUser = Messenger.Send<WindowsUserRequestMessage>();
             }
 
             return CurrentUser;

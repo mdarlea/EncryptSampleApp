@@ -2,7 +2,7 @@
 
 namespace CriptText.ViewModels.Messages
 {
-	public class TextToSaveInFileRequestMessage : RequestMessage<string>
+	public class CurrentUserNameRequestMessage: RequestMessage<string>
 	{
 	}
 }

@@ -6,9 +6,65 @@
       xmlns:local="clr-namespace:CriptText"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Exercise2Page">
+      Title="Exercise 2" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
-    <Grid>
-        
-    </Grid>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"></ColumnDefinition>
+			<ColumnDefinition Width="300"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Button Content="Select File" HorizontalAlignment="Left" Margin="10" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="90" Height="30" Click="Button_Click"/>
+
+		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="0" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+
+		<Label Content="Your Name:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+			<Label.Style>
+				<Style TargetType="{x:Type Label}">
+					<Setter Property="Visibility" Value="Visible" />
+					<Style.Triggers>
+						<DataTrigger Binding="{ Binding LayoutViewModel.UseWindowsUserName}" Value="True">
+							<Setter Property="Label.Visibility" Value="Collapsed" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Label.Style>
+		</Label>
+
+		<TextBox x:Name="StudentName"  Grid.Row="1" Grid.Column="1" Text="{ Binding LayoutViewModel.StudentName, Mode=TwoWay }" Width="Auto" Height="25" Margin="10">
+			<TextBox.Style>
+				<Style TargetType="{x:Type TextBox}">
+					<Setter Property="Visibility" Value="Visible" />
+					<Style.Triggers>
+						<DataTrigger Binding="{ Binding LayoutViewModel.UseWindowsUserName}" Value="True">
+							<Setter Property="TextBox.Visibility" Value="Collapsed" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</TextBox.Style>
+		</TextBox>
+
+
+		<TextBlock Grid.Row="3" Grid.Column="0" Text="Selected File:" Width="Auto" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
+		<TextBlock Grid.Row="3" Grid.Column="1" Text="{ Binding LayoutViewModel.SelectedFilePath }" Width="Auto" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+
+		<TextBlock Grid.Row="4" Grid.Column="0" Text="Encrypted File:" Width="Auto" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
+		<TextBlock Grid.Row="4" Grid.Column="1" Text="{ Binding LayoutViewModel.EncryptedTextFilePath }" Width="Auto" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+
+		<TextBlock Grid.Row="5" Grid.Column="0" Text="Decrypted File:" Width="Auto" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
+		<TextBlock Grid.Row="5" Grid.Column="1" Text="{ Binding LayoutViewModel.DecryptedTextFilePath }" Width="Auto" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+
+		<TextBlock Grid.Row="6" Grid.Column="0" Text="Time File:" Width="Auto" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
+		<TextBlock Grid.Row="6" Grid.Column="1" Text="{ Binding LayoutViewModel.TimeFileName }" Width="Auto" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+
+	</Grid>
 </Page>

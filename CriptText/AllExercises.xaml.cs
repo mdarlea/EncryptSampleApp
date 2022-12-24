@@ -22,7 +22,7 @@ namespace CriptText
 
 		private void exercise2_Click(object sender, RoutedEventArgs e)
 		{
-
+			NavigationService.Navigate(new Uri("Exercise2Page.xaml", UriKind.Relative));
 		}
 
 		private void createFile_Click(object sender, RoutedEventArgs e)

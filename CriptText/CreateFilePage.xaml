@@ -23,7 +23,7 @@
 
 		<Label Content="File Name:" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14"></Label>
 		<TextBox x:Name="FileName" Text="{ Binding LayoutViewModel.FileName, Mode=TwoWay }"  Grid.Row="0" Grid.Column="1" Width="Auto" Height="25" Margin="10"></TextBox>
-		<TextBox x:Name="message" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+		<TextBox x:Name="message" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" >
 			<TextBox.Text>
 				<Binding Path="LayoutViewModel.TextToSave" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
 					<Binding.ValidationRules>
@@ -33,7 +33,7 @@
 			</TextBox.Text>
 		</TextBox>
 
-		<Button Content="Create File" Command="{ Binding LayoutViewModel.CreateFileCommand, Mode=OneWay }"  Grid.Row="2" Grid.ColumnSpan="2" Width="300" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,10" FontFamily="Arial" FontSize="14" FontWeight="Bold">
+		<Button Content="Create Or Update File" Command="{ Binding LayoutViewModel.CreateFileCommand, Mode=OneWay }"  Grid.Row="2" Grid.ColumnSpan="2" Width="300" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,10" FontFamily="Arial" FontSize="14" FontWeight="Bold">
 			<Button.Effect>
 				<DropShadowEffect/>
 			</Button.Effect>
@@ -55,18 +55,33 @@
 			</Button.Style>
 		</Button>
 
-		<Label Grid.Row="3" Grid.ColumnSpan="2" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
-			<Label.Style>
-				<Style TargetType="{x:Type Label}">
+		<TextBlock Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+			<TextBlock.Style>
+				<Style TargetType="{x:Type TextBlock}">
 					<Setter Property="Visibility" Value="Visible" />
-					<Setter Property="Content" Value="File was successfully created" />
+					<Setter Property="Text" Value="File was created:" />
 					<Style.Triggers>
 						<DataTrigger Binding="{ Binding LayoutViewModel.FileCreated }" Value="False">
 							<Setter Property="Label.Visibility" Value="Collapsed" />
 						</DataTrigger>
 					</Style.Triggers>
 				</Style>
-			</Label.Style>
-		</Label>
+			</TextBlock.Style>
+		</TextBlock>
+
+		<TextBlock Grid.Row="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Height="25" FontFamily="Arial" FontSize="14">
+			<TextBlock.Style>
+				<Style TargetType="{x:Type TextBlock}">
+					<Setter Property="Visibility" Value="Visible" />
+					<Setter Property="Text" Value="{ Binding LayoutViewModel.FilePath }" />
+					<Style.Triggers>
+						<DataTrigger Binding="{ Binding LayoutViewModel.FileCreated }" Value="False">
+							<Setter Property="Label.Visibility" Value="Collapsed" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</TextBlock.Style>
+		</TextBlock>
+		
 	</Grid>
 </Page>
