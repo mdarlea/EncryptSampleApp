@@ -27,7 +27,7 @@
 		<CheckBox x:Name="specifyFileName" Content="Specify a file name for saving the student name" Grid.Row="0" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.ManuallySelectFileName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
 		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="1" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
 
-		<Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+		<Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
 				<Style TargetType="{x:Type Label}">
 					<Setter Property="Visibility" Value="Visible" />
@@ -40,7 +40,7 @@
 				</Style>
 			</Label.Style>
 		</Label>
-		<TextBox x:Name="FileName" Text="{ Binding LayoutViewModel.Filename, Mode=TwoWay }"  Grid.Row="2" Grid.Column="1" Width="Auto" Height="25" Margin="10">
+		<TextBox x:Name="FileName" Text="{ Binding LayoutViewModel.Filename, Mode=TwoWay }"  Grid.Row="3" Grid.Column="1" Width="Auto" Height="25" Margin="10">
 			<TextBox.Style>
 				<Style TargetType="{x:Type TextBox}">
 					<Setter Property="Visibility" Value="Visible" />
@@ -53,7 +53,7 @@
 			</TextBox.Style>
 		</TextBox>
 
-		<Label Content="Your Name:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+		<Label Content="Your Name:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
 				<Style TargetType="{x:Type Label}">
 					<Setter Property="Visibility" Value="Visible" />
@@ -67,7 +67,7 @@
 			</Label.Style>
 		</Label>
 
-		<TextBox x:Name="StudentName"  Grid.Row="3" Grid.Column="1" Text="{ Binding LayoutViewModel.StudentName, Mode=TwoWay }" Width="Auto" Height="25" Margin="10">
+		<TextBox x:Name="StudentName"  Grid.Row="2" Grid.Column="1" Text="{ Binding LayoutViewModel.StudentName, Mode=TwoWay }" Width="Auto" Height="25" Margin="10">
 			<TextBox.Style>
 				<Style TargetType="{x:Type TextBox}">
 					<Setter Property="Visibility" Value="Visible" />
