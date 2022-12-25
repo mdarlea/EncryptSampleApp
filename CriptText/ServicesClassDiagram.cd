@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CriptText.Services.AesEncryptTextService">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\AesEncryptTextService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CriptText.Models.AesEncryptModel">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAABAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AesEncryptModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.Services.RsaEncryptService">
+    <Position X="3.75" Y="0.5" Width="3.25" />
+    <Members>
+      <Method Name="RSADecrypt" Hidden="true" />
+      <Method Name="RSAEncrypt" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>oAAAEAAAACAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RsaEncryptService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CriptText.Models.RsaEncryptModel">
+    <Position X="3.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\RsaEncryptModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.Models.ActionResult&lt;T&gt;">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ActionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
