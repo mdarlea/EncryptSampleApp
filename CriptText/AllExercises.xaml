@@ -13,17 +13,17 @@
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 		<StackPanel Orientation = "Horizontal">
-			<Button x:Name = "exercise1" Content = "Exercise 1" Margin = "10" Width = "120" Height = "30" Click="exercise1_Click" >
+			<Button x:Name = "exercise1" Template="{StaticResource buttonTemplate}" Content = "Exercise 1" Margin = "10" Width = "120" Height = "30" Click="exercise1_Click" >
 				<Button.Effect>
 					<DropShadowEffect/>
 				</Button.Effect>
 			</Button>
-			<Button x:Name = "createFile" Content = "Create File For Exercise 2" Margin = "10" Width = "150" Height = "30" Click="createFile_Click">
+			<Button x:Name = "createFile" Template="{StaticResource buttonTemplate}" Content = "Create File For Exercise 2" Margin = "10" Width = "150" Height = "30" Click="createFile_Click">
 				<Button.Effect>
 					<DropShadowEffect/>
 				</Button.Effect>
 			</Button>
-			<Button x:Name = "exercise2" Content = "Exercise 2" Margin = "10" Width = "120" Height = "30" Click="exercise2_Click">
+			<Button x:Name = "exercise2" Template="{StaticResource buttonTemplate}" Content = "Exercise 2" Margin = "10" Width = "120" Height = "30" Click="exercise2_Click">
 				<Button.Effect>
 					<DropShadowEffect/>
 				</Button.Effect>

@@ -24,7 +24,7 @@
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="1" Grid.Column="1" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="1" Grid.Column="1" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
 
 		<Label Content="Your Name:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
@@ -53,10 +53,7 @@
 				</TextBox.Style>
 			</TextBox>
 
-			<Button Content="Select File" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Width="90" Height="30" Click="Button_Click">
-				<Button.Effect>
-					<DropShadowEffect/>
-				</Button.Effect>
+			<Button Content="Select File" Template="{StaticResource buttonTemplate}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Width="90" Height="30" Click="Button_Click">
 			</Button>
 		</StackPanel>
 

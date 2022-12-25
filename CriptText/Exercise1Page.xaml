@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Exercise 1" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
-	<Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="200"></ColumnDefinition>
 			<ColumnDefinition Width="300"></ColumnDefinition>
@@ -25,7 +25,7 @@
 		</Grid.RowDefinitions>
 
 		<CheckBox x:Name="specifyFileName" Content="Specify a file name for saving the student name" Grid.Row="0" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.ManuallySelectFileName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="2" Grid.Column="1" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="2" Grid.Column="1" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
 
 		<Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
@@ -80,16 +80,13 @@
 			</TextBox.Style>
 		</TextBox>
 
-		<Button Content="Process Encryption" Command="{ Binding LayoutViewModel.CreateFileCommand, Mode=OneWay }"  Grid.Row="4" Grid.ColumnSpan="2" Width="300" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontFamily="Arial" FontSize="14" FontWeight="Bold">
-			<Button.Effect>
-				<DropShadowEffect/>
-			</Button.Effect>
+		<Button Template="{StaticResource buttonTemplate}" Content="Process Encryption" Command="{ Binding LayoutViewModel.CreateFileCommand, Mode=OneWay }"  Grid.Row="4" Grid.ColumnSpan="2" Width="300" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontFamily="Arial" FontSize="14" FontWeight="Bold">
 			<Button.Style>
 				<Style TargetType="{x:Type Button}">
 					<Setter Property="Visibility" Value="Visible" />
 					<Style.Triggers>
 						<DataTrigger Binding="{ Binding LayoutViewModel.ManuallySelectFileName}" Value="True">
-							<Setter Property="Button.Visibility" Value="Collapsed" />
+							<Setter Property="Visibility" Value="Collapsed" />
 						</DataTrigger>
 					</Style.Triggers>
 				</Style>
