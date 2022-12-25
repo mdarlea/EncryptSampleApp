@@ -62,7 +62,7 @@
 					<Setter Property="Text" Value="File was created:" />
 					<Style.Triggers>
 						<DataTrigger Binding="{ Binding LayoutViewModel.FileCreated }" Value="False">
-							<Setter Property="Label.Visibility" Value="Collapsed" />
+							<Setter Property="Visibility" Value="Collapsed" />
 						</DataTrigger>
 					</Style.Triggers>
 				</Style>
@@ -76,7 +76,7 @@
 					<Setter Property="Text" Value="{ Binding LayoutViewModel.FilePath }" />
 					<Style.Triggers>
 						<DataTrigger Binding="{ Binding LayoutViewModel.FileCreated }" Value="False">
-							<Setter Property="Label.Visibility" Value="Collapsed" />
+							<Setter Property="Visibility" Value="Collapsed" />
 						</DataTrigger>
 					</Style.Triggers>
 				</Style>

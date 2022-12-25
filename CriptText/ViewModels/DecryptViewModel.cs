@@ -42,16 +42,23 @@ namespace CriptText.ViewModels
 
 			Messenger.Register<DecryptViewModel, RsaTextEncryptedMessage>(this, (r, m) =>
 			{
-				var decryptedText = rsaEncryptTextService.DecryptText(m.Value);
+				var decryptedResult = rsaEncryptTextService.DecryptText(m.Value);
+
+				if (!string.IsNullOrEmpty(decryptedResult.Error)) 
+				{
+					Messenger.Send(new RsaEncryptionErrorMessage(decryptedResult.Error));
+
+					return;
+				}
 
 				if (!string.IsNullOrWhiteSpace(m.TimeFileName))
 				{
 					fileService.AddNewlineToFile(m.TimeFileName, $"Text was decrypted at {DateTime.Now}");
 				}
 
-				DecryptedText = decryptedText;
+				DecryptedText = decryptedResult.Result;
 
-				Messenger.Send(new RsaTextDecryptedMessage(decryptedText!));
+				Messenger.Send(new RsaTextDecryptedMessage(decryptedResult.Result ?? string.Empty));
 			});
 		}
 

@@ -78,7 +78,14 @@ namespace CriptText.ViewModels
             private set => SetProperty(ref fileCreated, value);
         }
 
-        protected override void OnPropertyChanged(PropertyChangedEventArgs e)
+		private string? rsaEncryptionError;
+		public string? RsaEncryptionError
+		{
+			get => rsaEncryptionError;
+			private set => SetProperty(ref rsaEncryptionError, value);
+		}
+
+		protected override void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(e);
 
@@ -99,12 +106,11 @@ namespace CriptText.ViewModels
 
             Messenger.Register<Exercise2ViewModel, FileCreatedMessage>(this, (r, m) =>
             {
-                FileName = m.Value.FileName;
-
 				switch (m.FileContentType) 
 				{
 					case FileContentType.Text:
-						FilePath= m.Value.FilePath;
+						FileName = m.Value.FileName;
+						FilePath = m.Value.FilePath;
 						FileCreated = true;
 						break;
 					case FileContentType.Encrypted:
@@ -123,6 +129,8 @@ namespace CriptText.ViewModels
 
 					var fileName = $"{result.Response.Replace(" ", string.Empty)}_crypt";
 
+					RsaEncryptionError = null;
+
 					Messenger.Send(new CreateFileMessage(fileName, m.Value.EncryptedText, FileContentType.Encrypted));
 				}
 			});
@@ -134,9 +142,12 @@ namespace CriptText.ViewModels
 
 					var fileName = $"{result.Response.Replace(" ", string.Empty)}_decrypt";
 
+					RsaEncryptionError = null;
+
 					Messenger.Send(new CreateFileMessage(fileName, m.Value, FileContentType.Decrypted));
 				}
 			});
+			Messenger.Register<Exercise2ViewModel, RsaEncryptionErrorMessage>(this, (r, m) => RsaEncryptionError = m.Value);
 
 			FileName = Messenger.Send<FileNameRequestMessage>();
         }
@@ -164,6 +175,10 @@ namespace CriptText.ViewModels
 
         private void EncryptText()
         {
+			EncryptedTextFilePath = null;
+			DecryptedTextFilePath= null;
+			RsaEncryptionError = null;
+
             if (string.IsNullOrWhiteSpace(SelectedFilePath))
             {
 				return;

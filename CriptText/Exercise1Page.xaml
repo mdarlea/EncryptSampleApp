@@ -25,7 +25,7 @@
 		</Grid.RowDefinitions>
 
 		<CheckBox x:Name="specifyFileName" Content="Specify a file name for saving the student name" Grid.Row="0" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.ManuallySelectFileName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="1" Grid.ColumnSpan="2" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+		<CheckBox x:Name="useWindowsName" Content="Use Windows user name" Grid.Row="2" Grid.Column="1" IsChecked="{ Binding LayoutViewModel.UseWindowsUserName, Mode=TwoWay }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
 
 		<Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
@@ -53,7 +53,7 @@
 			</TextBox.Style>
 		</TextBox>
 
-		<Label Content="Your Name:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
+		<Label Content="Your Name:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14">
 			<Label.Style>
 				<Style TargetType="{x:Type Label}">
 					<Setter Property="Visibility" Value="Visible" />
@@ -67,7 +67,7 @@
 			</Label.Style>
 		</Label>
 
-		<TextBox x:Name="StudentName"  Grid.Row="2" Grid.Column="1" Text="{ Binding LayoutViewModel.StudentName, Mode=TwoWay }" Width="Auto" Height="25" Margin="10">
+		<TextBox x:Name="StudentName"  Grid.Row="1" Grid.Column="1" Text="{ Binding LayoutViewModel.StudentName, Mode=TwoWay }" Width="Auto" Height="25" Margin="10">
 			<TextBox.Style>
 				<Style TargetType="{x:Type TextBox}">
 					<Setter Property="Visibility" Value="Visible" />
@@ -100,9 +100,9 @@
 		<Label Content="{Binding CurrentUserViewModel.CurrentUser}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
 
 		<Label Content="Encrypted Name:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
-		<Label Content="{Binding EncryptViewModel.EncryptedName}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+		<Label Content="{Binding EncryptViewModel.EncryptedText }" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
 
 		<Label Content="Decrypted Name:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Height="25" FontWeight="Bold" FontFamily="Arial" FontSize="14" />
-		<Label Content="{Binding DecryptViewModel.DecryptedName}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
+		<Label Content="{Binding DecryptViewModel.DecryptedText }" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Height="25" FontFamily="Arial" FontSize="14" />
 	</Grid>
 </Page>

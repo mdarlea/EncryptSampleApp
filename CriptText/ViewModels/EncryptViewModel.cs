@@ -75,16 +75,23 @@ namespace CriptText.ViewModels
 
 			var text = isUserFile ? fileService.GetUserFileContent(fileName) : fileService.GetFileContent(fileName);
 
-			var encryptedValue = rsaEncryptTextService.EncryptText(text);
+			var encryptedResult = rsaEncryptTextService.EncryptText(text);
+
+			if (!string.IsNullOrEmpty(encryptedResult.Error)) 
+			{
+				Messenger.Send(new RsaEncryptionErrorMessage(encryptedResult.Error));
+
+				return;
+			}
 
 			if (!string.IsNullOrWhiteSpace(timeFileName))
 			{
 				fileService.AddNewlineToFile(timeFileName, $"Text was encrypted at { DateTime.Now }");
 			}
 
-			EncryptedText = encryptedValue.EncryptedText;
+			EncryptedText = encryptedResult.Result.EncryptedText;
 
-			Messenger.Send(new RsaTextEncryptedMessage(encryptedValue!, timeFileName));
+			Messenger.Send(new RsaTextEncryptedMessage(encryptedResult.Result, timeFileName));
 		}
 	}
 }
