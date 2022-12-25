@@ -32,7 +32,14 @@ namespace CriptText
 			   .AddTransient<IAesEncryptTextService, AesEncryptTextService>()
 			   .BuildServiceProvider()
 			   );
-			   
+		}
+
+		protected override void OnExit(ExitEventArgs e)
+		{
+			base.OnExit(e);
+
+			var service = Ioc.Default.GetService<IRsaEncryptService>();
+			service?.Dispose();
 		}
 	}
 }
