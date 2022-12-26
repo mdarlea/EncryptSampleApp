@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CriptText.Models.RsaEncryptModel">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\RsaEncryptModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.Services.FileService">
+    <Position X="4.25" Y="2.75" Width="2.5" />
+    <Members>
+      <Method Name="GetFilePath" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAJAAAAAQAAAAAAAAAAAAAAAABAAAgAAA=</HashCode>
+      <FileName>Services\FileService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CriptText.ViewModels.Exercise2MainViewModel">
+    <Position X="4.5" Y="5" Width="4" />
+    <Members>
+      <Method Name="Exercise2MainViewModel" Hidden="true" />
+    </Members>
+    <AssociationLine Name="CurrentUserViewModel" Type="CriptText.ViewModels.CurrentUserViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="5.375" />
+        <Point X="1.5" Y="5.375" />
+        <Point X="1.5" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="WindowsUserViewModel" Type="CriptText.ViewModels.WindowsUserViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="5.253" />
+        <Point X="15.25" Y="5.253" />
+        <Point X="15.25" Y="7.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.05" Y="0.318" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="CreateFileViewModel" Type="CriptText.ViewModels.CreateFile.CreateFileViewModel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="5.452" />
+        <Point X="13.125" Y="5.452" />
+        <Point X="13.125" Y="7.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="0.402" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="EncryptViewModel" Type="CriptText.ViewModels.EncryptViewModel">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.19" Y="0.193" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DecryptViewModel" Type="CriptText.ViewModels.DecryptViewModel" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="5.997" />
+        <Point X="4.938" Y="5.997" />
+        <Point X="4.938" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAoAAAAIAAAACAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Exercise2MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LayoutViewModel" />
+      <Property Name="CurrentUserViewModel" />
+      <Property Name="WindowsUserViewModel" />
+      <Property Name="CreateFileViewModel" />
+      <Property Name="EncryptViewModel" />
+      <Property Name="DecryptViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CriptText.ViewModels.CreateFile.CreateFileViewModel">
+    <Position X="11.5" Y="7.75" Width="2" />
+    <Members>
+      <Method Name="CreateFileViewModel" Hidden="true" />
+      <Field Name="fileName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAQAAAAAAAAAAAAQAMAAAABgAAA=</HashCode>
+      <FileName>ViewModels\CreateFileViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CriptText.ViewModels.CurrentUserViewModel">
+    <Position X="0.5" Y="7.5" Width="2" />
+    <Members>
+      <Field Name="currentUser" Hidden="true" />
+      <Method Name="GetCurrentUser" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAQACCAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CurrentUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.ViewModels.DecryptViewModel">
+    <Position X="3.25" Y="7.5" Width="3.25" />
+    <Members>
+      <Field Name="aesEncryptTextService" Hidden="true" />
+      <Field Name="decryptedText" Hidden="true" />
+      <Method Name="DecryptViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAAAAAARAAAAAAAIAAAAAgABA=</HashCode>
+      <FileName>ViewModels\DecryptViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.ViewModels.EncryptViewModel">
+    <Position X="7.5" Y="7.5" Width="3.25" />
+    <Members>
+      <Method Name="AesEncryptMessage" Hidden="true" />
+      <Field Name="aesEncryptTextService" Hidden="true" />
+      <Field Name="encryptedText" Hidden="true" />
+      <Method Name="EncryptViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAAAAAAQABAAAAAYAAQAAgAAA=</HashCode>
+      <FileName>ViewModels\EncryptViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.ViewModels.Exercise2ViewModel">
+    <Position X="6.25" Y="10.75" Width="2.5" />
+    <Members>
+      <Field Name="decryptedTextFilePath" Hidden="true" />
+      <Field Name="encryptedTextFilePath" Hidden="true" />
+      <Method Name="Exercise2ViewModel" Hidden="true" />
+      <Field Name="fileCreated" Hidden="true" />
+      <Field Name="fileName" Hidden="true" />
+      <Field Name="filePath" Hidden="true" />
+      <Field Name="rsaEncryptionError" Hidden="true" />
+      <Field Name="selectedFilePath" Hidden="true" />
+      <Field Name="textToSave" Hidden="true" />
+      <Field Name="timeFileName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAYAAAAGQAAACIAQEEBAAABE4AEEACMBAAABgAQA=</HashCode>
+      <FileName>ViewModels\Exercise2ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.ViewModels.WindowsUserViewModel">
+    <Position X="14.25" Y="7.75" Width="2" />
+    <Members>
+      <Field Name="userName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAQAAAAEAAAA=</HashCode>
+      <FileName>ViewModels\WindowsUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CriptText.Services.RsaEncryptService">
+    <Position X="0.5" Y="2.75" Width="3.25" />
+    <Members>
+      <Method Name="RSADecrypt" Hidden="true" />
+      <Method Name="RSAEncrypt" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>oAAAEAAAACAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RsaEncryptService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CriptText.Models.ActionResult&lt;T&gt;">
+    <Position X="3" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="ActionResult" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ActionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
